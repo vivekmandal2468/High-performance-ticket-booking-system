@@ -1,0 +1,22 @@
+{
+  "name": "high-performance-ticket-booking-service",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "bootstrap": "docker-compose up -d && npm run build:backend && npm run migrate",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:all": "npm run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "test": "npm --prefix backend run test",
+    "lint": "npm --prefix frontend run lint",
+    "migrate": "npm --prefix backend run migrate",
+    "start": "npm --prefix backend run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

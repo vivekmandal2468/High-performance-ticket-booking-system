@@ -1,0 +1,36 @@
+{
+  "name": "github-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set DEMO_MODE=true&& node --loader ts-node/esm src/index.ts",
+    "test": "npx jest --config jest.config.cjs",
+    "start": "node dist/index.js",
+    "migrate": "node dist/db/migrate.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.20.0",
+    "bullmq": "^5.81.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "ioredis": "^5.11.1",
+    "pg": "^8.22.0",
+    "ts-node": "^10.9.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "autocannon": "^8.0.0",
+    "jest": "^30.4.2",
+    "k6": "^0.0.0",
+    "ts-jest": "^29.4.12",
+    "typescript": "^5.3.3"
+  }
+}
