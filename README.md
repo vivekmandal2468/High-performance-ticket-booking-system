@@ -83,13 +83,15 @@ sequenceDiagram
 
 | Technology | Purpose |
 | :--- | :--- |
+| **React + Vite** | Lightning-fast frontend framework and build tool for interactive user interfaces |
+| **Tailwind CSS** | Utility-first CSS framework for rapid, responsive UI styling and animations |
+| **TypeScript** | End-to-end type-safe code architecture across both client and server |
 | **Node.js + Express** | High-performance asynchronous API runtime |
-| **TypeScript** | Type-safe code architecture |
 | **Redis 7** | Sub-millisecond seat locking via Lua Scripts |
 | **PostgreSQL 15** | Relational storage & ACID compliant transactional processing |
 | **BullMQ** | Reliable asynchronous job queue for handling dynamic TTL expirations |
 | **Docker Compose** | Single-command containerized infrastructure deployment |
-| **Jest** | Automated unit testing framework |
+| **Jest** | Automated backend unit testing framework |
 
 ---
 
@@ -98,16 +100,32 @@ sequenceDiagram
 ```text
 ├── docker-compose.yml       # Docker configuration for Postgres & Redis
 ├── package.json             # Root orchestration scripts (dev/build/test)
+├── README.md                # Project documentation
 ├── backend/                 # Backend service (Express + Redis + PostgreSQL)
 │   ├── src/
+│   │   ├── config/          # Database and Redis configurations
+│   │   ├── controllers/     # Route controllers (booking, show)
+│   │   ├── db/              # Database migrations and schemas
+│   │   ├── queues/          # BullMQ queue processors
+│   │   ├── services/        # Business logic and lock services
+│   │   ├── __tests__/       # Backend tests
+│   │   └── index.ts         # Backend entry point
 │   ├── package.json
 │   ├── tsconfig.json
-│   ├── jest.config.cjs
-│   └── dist/
-├── frontend/                # Frontend app (React + Vite)
-│   ├── src/
-│   └── package.json
-└── README.md
+│   └── jest.config.cjs      # Testing configuration
+└── frontend/                # Frontend app (React + Vite)
+    ├── public/              # Public assets (favicon, icons)
+    ├── src/
+    │   ├── app/             # Application root (App.tsx)
+    │   ├── assets/          # Static assets (hero image, svgs)
+    │   ├── features/        # Feature-based modules (booking api, components, types)
+    │   ├── shared/          # Shared UI components (Header, NotificationToast)
+    │   ├── styles/          # Global stylesheets
+    │   └── main.tsx         # React entry point
+    ├── index.html
+    ├── package.json
+    ├── tsconfig.json        # TypeScript configuration
+    └── vite.config.ts       # Vite bundler configuration
 ```
 
 ---
@@ -185,17 +203,6 @@ npm test
 
 ---
 
-## 🛣️ Roadmap
-
-- [x] Architecture design & tech stack selection
-- [x] Database migrations & Redis Lua atomic seat locking
-- [x] BullMQ 10-minute reservation expiration background worker
-- [x] Jest Unit Testing suite setup (100% passing)
-- [ ] **Phase 2**: End-to-End Integration API Testing
-- [ ] **Phase 3**: Prometheus (`prom-client`) + Grafana Monitoring Dashboard
-- [ ] **Phase 4**: High-Concurrency Load Testing (`autocannon` / `k6`)
-
----
 
 ## 📝 License
 
